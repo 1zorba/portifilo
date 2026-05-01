@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProfile extends FormRequest
+class UpadetProject extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,10 @@ class UpdateProfile extends FormRequest
     public function rules(): array
     {
         return [
-            // 'user_id' => 'required|exists:users,id',
-            'job_title' => 'required|nullable',
-            'bio' => 'nullable|string',
-            'profile_image' => 'nullable|image|max:1024|mimes:png,jpg,jpeg,gif',
-            'cv_url' => 'nullable|string',
-            'social_links' => 'string|nullable',
-            'phone' => 'string|nullable',
-            'borrow' => 'string|nullable',
-            'social_links2' => 'string|nullable',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'link_location' => 'nullable|string',
         ];
     }
 }

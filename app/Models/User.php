@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Task;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable,HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -47,11 +48,23 @@ class User extends Authenticatable
         ];
     }
 
-    public function profile(){
-return $this->hasOne(profile::class);
+    public function profile()
+    {
+        return $this->hasOne(profile::class);
     }
 
-     public function projects(){
-    return $this->hasMany(projects::class);
+    public function projects()
+    {
+        return $this->hasMany(projects::class);
+    }
+
+
+    public function services()
+    {
+        return $this->hasMany(services::class);
+    }
+    public function Poems()
+    {
+        return $this->hasMany(poems::class);
     }
 }

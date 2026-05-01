@@ -25,11 +25,13 @@ class storeProfile extends FormRequest
 
             // 'user_id' => 'required|exists:users,id',
             'job_title' => 'required',
-            'bio' => 'required',
-            'profile_image' => 'nullable|image|mimes:png,jpg,gif',
+            'bio' => 'nullable||string',
+            'profile_image' => 'nullable|image|max:1024|mimes:png,jpg,jpeg,gif',
             'cv_url' => 'nullable|string',
             'social_links' => 'string|nullable',
             'phone' => 'string',
+            'borrow' => 'string',
+            'social_links2' => 'social_links2',
         ];
     }
 }

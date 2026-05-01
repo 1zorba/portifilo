@@ -1,0 +1,50 @@
+عشان اضيف  اغير نوع العمود في القاعدة 
+composer require doctrine/dbal
+________
+php artisan make:migration change_poem_content_to_text_in_poems_table --table=poems
+php artisan make:migration change_social_links2_to_string_in_profiles_table --table=profiles
+php artisan make:migration change_contentMessage_to_text_in_contacts_table --table=contacts
+_________
+public function up()
+{
+    Schema::table('poems', function (Blueprint $table) {
+        // نستخدم change() لتغيير النوع إلى text
+        $table->text('poem_content')->change();
+    });
+}
+
+public function down()
+{
+    Schema::table('poems', function (Blueprint $table) {
+        // للرجوع للحالة الأصلية إذا أردت
+        $table->string('poem_content', 255)->change();
+    });
+}
+
+
+
+
+
+
+
+
+اضافة عمود الى الجدول 
+
+php artisan make:migration add_social_links2_to_profiles_table --table=profiles
+
+ public function up(): void
+{
+    Schema::table('profiles', function (Blueprint $table) {
+        // إضافة العمود من نوع json ويسمح بـ null لتجنب المشاكل مع البيانات القديمة
+        $table->json('social_links2')->after('bio')->nullable(); 
+    });
+}
+
+public function down(): void
+{
+    Schema::table('profiles', function (Blueprint $table) {
+        $table->dropColumn('social_links2');
+    });
+}
+
+php artisan migrate

@@ -19,16 +19,16 @@ class projectsRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    // app/Http/Requests/projectsRequest.php
+
+    public function rules()
     {
         return [
-            // 'user_id'=>'required|exists:users,id',
-            'title' => 'required',
-            'description' => 'required',
-            'image_url' => 'nullable|image|mimes:png,jpg,gif',
-            'tags' => 'required',
-            'live_link' => 'string',
-            'github_link' => 'required',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'link_location' => 'nullable|string',
+
         ];
     }
 }
